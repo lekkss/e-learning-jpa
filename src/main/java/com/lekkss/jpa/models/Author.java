@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -39,4 +40,6 @@ public class Author {
     )
     private String email;
     private Integer age;
+    @ManyToMany
+    private List<Course> courses;
 }
