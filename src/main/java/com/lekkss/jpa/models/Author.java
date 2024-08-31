@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 //@Table(name = "AUTHOR_TBL")
 public class Author {
@@ -29,9 +31,6 @@ public class Author {
 //            allocationSize = 1
 //    )
     private Integer id;
-    @Column(
-            name = "f_name"
-    )
     private String firstName;
     private String lastName;
     @Column(
@@ -40,13 +39,4 @@ public class Author {
     )
     private String email;
     private Integer age;
-    @Column(
-            updatable = false,
-            nullable = false
-    )
-    private LocalDateTime createdAt;
-    @Column(
-            insertable = false
-    )
-    private LocalDateTime lastModified;
 }
