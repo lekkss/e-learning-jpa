@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 public class BaseEntity {
     @Id
     @GeneratedValue
+    private Integer id;
     private LocalDateTime createdAt;
     private LocalDateTime lastModifiedAt;
     private String createdBy;
