@@ -2,20 +2,16 @@ package com.lekkss.jpa.models;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-public class Resource {
-    @Id
-    @GeneratedValue
-    private Integer id;
+public class Resource extends BaseEntity {
     private String name;
     private int size;
     private String url;
