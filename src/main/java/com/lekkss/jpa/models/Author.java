@@ -40,6 +40,6 @@ public class Author {
     )
     private String email;
     private Integer age;
-    @ManyToMany
+    @ManyToMany(mappedBy = "authors")
     private List<Course> courses;
 }
