@@ -5,10 +5,12 @@ import com.lekkss.jpa.models.Author;
 import com.lekkss.jpa.models.Video;
 import com.lekkss.jpa.repositories.AuthorRepository;
 import com.lekkss.jpa.repositories.VideoRepository;
+import com.lekkss.jpa.specification.AuthorSpecification;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.domain.Specification;
 
 @SpringBootApplication
 public class JpaApplication {
@@ -31,7 +33,7 @@ public class JpaApplication {
 						.age(faker.number().numberBetween(19,40))
 						.email(faker.name().username() + i +"@lekksscoding.com")
 						.build();
-				repository.save(author);
+//				repository.save(author);
 			}
 				// Update author with id 1
 				var author =  Author.builder()
@@ -52,7 +54,12 @@ public class JpaApplication {
 //					.forEach(System.out::println);
 
 			//update with named query
-			repository.updateByNamedQuery(12);
+//			repository.updateByNamedQuery(12);
+
+			Specification<Author> spec = Specification
+					.where(AuthorSpecification.hasAge(34))
+					.or(AuthorSpecification.firstNameLike("Ri"));
+			repository.findAll(spec).forEach(System.out::println);
 
 
 //			var video = Video.builder()
